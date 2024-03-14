@@ -1,0 +1,153 @@
+*{
+    padding: 0;
+    margin: 0;
+    transition-duration: 0.2s;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-color: black;
+}
+.logo h1{
+    display: inline;
+}
+.navbar{
+    position: static;
+    height: 80px;
+    width: 1270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    border-width: 1px;
+    padding-bottom: 2px;
+    background-color: #ffeb2a;
+    border-color: black;
+}
+.logo{
+    background-color: black;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    border: solid;
+    border-width: 1.5px;
+    border-color: black;
+    margin-left: 21px;
+    align-items: center;
+}
+.navcontents{
+    margin-left: 120px;
+    display: flex;
+}
+.navcontents li{
+    display: inline;
+    margin-right: 50px;
+    justify-content: space-evenly;
+
+}
+.navcontents li a{
+    border: solid;
+    border-width: 1.5px;
+    border-radius: 20px;
+    border-color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    background-color: whitesmoke;
+}
+.navcontents li a:hover{
+    color: #ffeb2a;
+    background-color: black;
+    border-color:  transparent;
+}
+.sideinfo{
+    height: 230px;
+    width: 50px;
+    background-color: white;
+    margin-top: 100px;
+    border: solid;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-width: 3px;
+    border-color: yellow;
+    position: sticky;
+    justify-content: end;
+}
+.sideinfo img{
+    height: 30px;
+    width: 30px;
+    margin-top: 20px;
+    margin-left: 10px;
+    align-content: space-evenly;
+    justify-content: space-evenly; 
+}
+.sideinfo img:hover{
+    height: 37px;
+    width:39px;
+}
+.main-hero{
+    display: flex;
+}
+.central{
+    height: 20px;
+    height: 500px;
+    width: 1000px;
+    color: #ffeb2a;
+    text-align: center;
+    font-size: 25px;
+    justify-content: space-evenly;
+}
+.name{
+    margin-top: 200px;
+    margin-left: 120px;
+}
+.intro{
+    margin-left: 100px;
+    font-size: 20px;
+}
+section{
+    height: 55px;
+    width: 100px;
+    position: relative;
+}
+#scroll{
+    margin-left: 525px;
+    margin-top: 160px;
+    background-color: black;
+}
+#scroll-btn{
+    position: absolute;
+    height: 50px;
+    width: 30px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    border: 1.4px solid white;
+    border-radius: 200px;
+}
+#scroll-btn:before{
+    position: absolute;
+    content: "";
+    margin: auto;
+    left: 0;
+    right: 0;
+    height: 7px;
+    width: 7px;
+    background-color: #ffeb2a;
+    border-radius: 50%;
+    animation: move-down 2s infinite;
+}
+@keyframes move-down{
+    80%{
+        opacity: 0.2;
+    }
+    100%{
+        transform: translateY(30px);
+        opacity: 0;
+    }
+}
