@@ -14,7 +14,7 @@ body{
 .navbar{
     position: static;
     height: 80px;
-    width: 1270px;
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
