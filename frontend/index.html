@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio</title>
+  <link rel="icon" type="image/png" href="./static/images/myimgp.jpg">
+  <link rel="stylesheet" href="./static/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="nav">
+    <h3>Sai Bhaskar Nanduri</h3>
+    <button class="hamburger" aria-label="Toggle navigation menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-list">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero" id="home">
+    <img src="./static/images/myimgp.jpg" alt="Profile Photo">
+    <h1>Hi <span class="wave-emoji">👋</span>, I'm Sai Bhaskar Nanduri</h1>
+    <p>Full Stack Developer | Data Science Enthusiast</p>
+    <a href="./static/resume_nsb.pdf" target="_blank">Resume</a>
+  </div>
+
+  <!-- About Section -->
+  <div class="about" id="about">
+    <h2>About me</h2>
+    <p>
+      I’m Sai Bhaskar Nanduri, a Computer Science and Engineering student at <strong>Gayatri Vidya Parishad College of Engineering (Autonomous)</strong>, Visakhapatnam. Alongside my undergraduate studies, I’m also pursuing a B.S. in Data Science from IIT Madras...
+    </p>
+
+    <div class="skills">
+      <h3>My Skill Set:</h3>
+
+      <div class="languages">
+        <p>Programming Languages:</p>
+        <div class="images">
+          <img src="./static/images/c.png">
+          <img src="./static/images/cpp.png">
+          <img src="./static/images/python.png">
+          <img src="./static/images/java.png">
+        </div> 
+      </div>
+
+      <div class="languages">
+        <p>Web Development:</p>
+        <div class="images">
+          <img src="./static/images/html.png">
+          <img src="./static/images/css.png">
+          <img src="./static/images/js.png">
+          <img src="./static/images/react.png">
+          <img src="./static/images/flask.png" style="height: 55px;">
+          <img src="./static/images/django.png">
+        </div> 
+      </div>
+
+      <div class="languages">
+        <p>Databases:</p>
+        <div class="images">
+          <img src="./static/images/sql.png">
+          <img src="./static/images/postgre.png">
+        </div> 
+      </div>
+
+      <div class="languages">
+        <p>Tools:</p>
+        <div class="images">
+          <img src="./static/images/git.png">
+          <img src="./static/images/github.png">
+          <img src="./static/images/vscode.png">
+          <img src="./static/images/colab.png">
+          <img src="./static/images/jupyter.png">
+        </div> 
+      </div>
+
+      <div class="languages">
+        <p>Designing:</p>
+        <div class="images">
+          <img src="./static/images/canva.png">
+        </div> 
+      </div>
+
+      <div class="languages">
+        <p><small>Competitive Programming Profiles:</small></p>
+        <div class="images">
+          <a href="https://leetcode.com/u/saibhaskarnanduri1/" target="_blank"><img src="./static/images/leetcode.png" alt="LeetCode"></a>
+          <a href="https://www.hackerrank.com/profile/saibhaskarnandu1" target="_blank"><img src="./static/images/hackerrank.jpg" alt="HackerRank" style="height: 60px;"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects Section -->
+  <div class="projects-section" id="projects">
+    <h2>Projects</h2>
+
+    <div class="project-card">
+      <h3>Collaborative Hobby Hub</h3>
+      <p>A web platform to connect users with shared hobbies and interests.<br><strong>Tech Stack:</strong> HTML, CSS, JS, Node.js, MongoDB</p>
+      <a href="https://github.com/SaiBhaskar05/CircuitBreakers-hacksprint" target="_blank">View Project</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Portfolio Website</h3>
+      <p>Personal website with dynamic content, form submissions, and responsive design.<br><strong>Tech Stack:</strong> Flask, TailwindCSS, HTML, CSS</p>
+      <a href="#" target="_blank">View Project</a>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div id="contact">
+    <h2>Contact</h2>
+    <form id="contact-form" class="contact-form">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+    <p id="form-status"></p>
+
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/sai-bhaskar-nanduri/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+      <a href="https://www.instagram.com/n_saibhaskar/" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+      <a href="https://github.com/SaiBhaskar05" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 <span class="cursive-text">NSBDevelopers</span>. All rights reserved.</p>
+  </footer>
+
+  <!-- Script for sending form data -->
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const status = document.getElementById('form-status');
+      status.textContent = "Sending message...";
+
+      const data = {
+        name: this.name.value,
+        email: this.email.value,
+        message: this.message.value
+      };
+
+      try {
+        const response = await fetch('http://localhost:5000/send-mail', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+          status.textContent = result.message;
+          this.reset();
+        } else {
+          status.textContent = result.message || 'Something went wrong.';
+        }
+      } catch (error) {
+        console.error(error);
+        status.textContent = 'Error sending message.';
+      }
+    });
+  </script>
+  <script src="./script.js"></script>
+</body>
+</html>
