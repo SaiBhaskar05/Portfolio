@@ -47,5 +47,3 @@ This portfolio is built to provide an overview of my experience, skills, and pro
 ## ✍️ Author
 
 **NANDURI SAI BHASKAR**
-
----
