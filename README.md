@@ -36,7 +36,7 @@ Portfolio/
 │       ├── images/        # Images for the site (profile, icons, etc.)
 │       └── resume_nsb.pdf # Resume PDF
 ├── README.md
-└── ... (other configuration and auxiliary files)
+
 ```
 
 
