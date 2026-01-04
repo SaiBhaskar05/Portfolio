@@ -71,7 +71,8 @@ def send_mail():
         return jsonify({'message': 'Please fill in all fields'}), 400
 
     try:
-        msg = Message(
+        # Email to you (the portfolio owner) with the message details
+        owner_msg = Message(
             subject=f"Portfolio: Contact Form Submission from {name}",
             sender=app.config['MAIL_USERNAME'],
             recipients=[app.config['MAIL_USERNAME']],
@@ -79,10 +80,19 @@ def send_mail():
             reply_to=email
         )
         
-        # Send email asynchronously to avoid blocking the response
-        send_async_email(msg)
+        # Confirmation email to the person who filled the form
+        user_msg = Message(
+            subject="Thank you for contacting me!",
+            sender=app.config['MAIL_USERNAME'],
+            recipients=[email],
+            body=f"Hi {name},\n\nThank you for reaching out! I have received your message and will get back to you as soon as possible.\n\nYour message:\n{message}\n\nBest regards"
+        )
         
-        logger.info(f"Email queued for sending from {name} ({email})")
+        # Send both emails asynchronously
+        send_async_email(owner_msg)
+        send_async_email(user_msg)
+        
+        logger.info(f"Emails queued for sending from {name} ({email})")
         return jsonify({'message': 'Message sent successfully!'}), 200
         
     except Exception as e:
