@@ -3,8 +3,16 @@ from flask_mail import Mail, Message
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
+import logging
+from threading import Thread
+import time
+from functools import wraps
 
 load_dotenv()
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 CORS(app)  # allow frontend requests
@@ -15,11 +23,42 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USE_SSL'] = False
 app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_MAX_EMAILS'] = None
+app.config['MAIL_ASCII_ATTACHMENTS'] = False
+
+# Connection timeout settings
+app.config['MAIL_TIMEOUT'] = 10  # 10 seconds timeout
 
 mail = Mail(app)
+
+def async_send_email(app, msg, max_retries=3):
+    """Send email asynchronously with retry logic"""
+    with app.app_context():
+        for attempt in range(max_retries):
+            try:
+                logger.info(f"Attempting to send email (attempt {attempt + 1}/{max_retries})")
+                mail.send(msg)
+                logger.info("Email sent successfully")
+                return True
+            except Exception as e:
+                logger.error(f"Email sending failed (attempt {attempt + 1}/{max_retries}): {str(e)}")
+                if attempt < max_retries - 1:
+                    # Exponential backoff: wait 2^attempt seconds before retrying
+                    wait_time = 2 ** attempt
+                    logger.info(f"Retrying in {wait_time} seconds...")
+                    time.sleep(wait_time)
+                else:
+                    logger.error(f"Failed to send email after {max_retries} attempts")
+                    return False
+
+def send_async_email(msg):
+    """Send email in a background thread"""
+    thread = Thread(target=async_send_email, args=(app, msg))
+    thread.daemon = True
+    thread.start()
 
 @app.route('/send-mail', methods=['POST'])
 def send_mail():
@@ -36,12 +75,18 @@ def send_mail():
             subject=f"Portfolio: Contact Form Submission from {name}",
             sender=app.config['MAIL_USERNAME'],
             recipients=[app.config['MAIL_USERNAME']],
-            body=f"Name: {name}\nEmail: {email}\nMessage:\n{message}"
+            body=f"Name: {name}\nEmail: {email}\nMessage:\n{message}",
+            reply_to=email
         )
-        mail.send(msg)
+        
+        # Send email asynchronously to avoid blocking the response
+        send_async_email(msg)
+        
+        logger.info(f"Email queued for sending from {name} ({email})")
         return jsonify({'message': 'Message sent successfully!'}), 200
+        
     except Exception as e:
-        print(e)
+        logger.error(f"Error queueing email: {str(e)}")
         return jsonify({'message': 'Something went wrong while sending email.'}), 500
 
 if __name__ == '__main__':
